@@ -1,0 +1,12 @@
+services:
+  hellow-world:
+    build: .
+    restart: unless-stopped
+    expose:
+      - "80"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://localhost:80/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
